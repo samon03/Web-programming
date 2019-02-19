@@ -1,2 +1,2 @@
 # Web-programming
-PHP, Javascript, CSS &amp; Ajax 
+PHP, HTML, CSS, Javascript &amp; Ajax 
