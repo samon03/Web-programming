@@ -14,6 +14,6 @@ For learning you can follow this site :
  
 For learning you can follow this site : https://www.w3schools.com/
 
-**Tools :** Notepad++, Sublime, netbeans , xampp , phpmyadmin (MySQL).
+**Tools :** Notepad++, Sublime, netbeans , xampp , phpmyadmin (MySQL)/SQLyog Enterprise(MySQL).
 
 **Contact me : samon3123@gmail.com (if needed)**
