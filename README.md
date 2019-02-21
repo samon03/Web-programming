@@ -1,5 +1,5 @@
 # Web-programming
-In the projects i used **PHP, HTML, CSS, Javascript &amp; Ajax**. So, here is a short introduction of those languages :  
+In the projects, i had used **PHP, HTML, CSS, Javascript &amp; Ajax**. So, a short introduction of those languages given below :  
 
 **PHP :** Hypertext Preprocessor (or simply PHP) is a server-side scripting language designed for web development.
 
