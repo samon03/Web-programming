@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Allah</title>
+	<meta charset="UTF-8">
+		<meta name="description" content="sample web page for JS illistrations">
+		<meta name="keywords" content="JS, JavaScript, DOM">
+		<meta name="author" content="samon">
+		
+		<!--for glyphicon icon section -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!--end of glyphicon section -->
+	<style type="text/css">
+
+	#alert
+	{
+		height: 30px;
+		background-color: #ffcccc;
+		padding: 5px;
+		display: none;
+	}
+	#alertBtn
+	{
+		float: right;
+		background-color: #ff9999;
+		border: 1px solid silver;
+		display: block;
+	}
+	h3
+	{
+		background-color: #ffccff;
+		text-align: center;
+		margin-bottom: 10px; 
+	}
+	#tdiv
+	{
+		border: 1px solid #009973;
+		background-color: #ffcccc;
+		padding: 5px;
+	}
+	#userTable 
+	{
+       width: 100%;
+	}	
+	#addBtn
+	{
+		height: 30px;
+		background-color: #ff9999;
+	}
+	#addBtn:hover
+	{
+		background-color: #ff66b3;
+	}
+	#tablecontainer
+	{
+        max-height: 400px;
+        overflow-y: auto;
+	}
+	#tablecontainer table,#tablecontainer tr
+	{
+			border-bottom:1px solid black;
+			border-collapse:collapse;
+	}
+	thead
+	{
+		
+	}
+	</style>
+	<script type="text/javascript">
+
+        function cancle()
+        {
+            document.getElementById("alertmsg").innerHTML = "";
+            document.getElementById("alert").style.display = "none";
+        }
+
+        var userid = [];
+        var useremail = [];
+        var usercity = [];
+
+        function validate()
+        {
+        	document.getElementById("alertmsg").innerHTML = "";
+            document.getElementById("alert").style.display = "none";
+
+            var id = document.querySelectorAll("#uid")[0].value;
+            if (id=="") 
+            {
+            	document.getElementById("alert").style.display = "block";
+            	document.getElementById("alertmsg").innerHTML = "Invalid <b>ID</b> field!";
+            	return;
+            }
+            else if(userid.indexOf(id) != -1)
+            {
+                document.getElementById("alert").style.display = "block";
+            	document.getElementById("alertmsg").innerHTML = "<b>ID</b> already exists!";
+            	return;
+            }
+
+            var email = document.getElementById("uemail").value;
+            if(email.indexOf("@") == -1 || email.indexOf(".com") == -1)
+            {
+                document.getElementById("alert").style.display = "block";
+            	document.getElementById("alertmsg").innerHTML = "Invalid <b>Email</b> address!";
+            	return;
+            }
+            
+            var city = document.getElementById("opt").value;
+            if (city == "None") 
+            {
+            	document.getElementById("alert").style.display = "block";
+            	document.getElementById("alertmsg").innerHTML = "Select a <b>city</b>!";
+            	return;
+            }
+
+            userid.push(id);
+            useremail.push(email);
+            usercity.push(city);
+
+            redraw();	
+        }
+
+        function redraw()
+        {
+        	document.getElementById("slist").innerHTML = "";
+        	if(userid.length == 0)
+        	{
+                var element = document.createElement("tr");
+                element.id = "norec";
+                element.innerHTML = "<td colspan='5' style='text-align: center; color: red;'>No data exists</td>";
+
+                document.getElementById("slist").appendChild(element);
+        	}
+        	else 
+        	{
+        		userid.sort(function(a, b){return a-b});
+
+        		var loop;
+        		for(loop = 0; loop < userid.length; loop++)
+        		{
+                    var elmnt = document.createElement("tr");
+        		    elmnt.innerHTML = "<td style='text-align:center;'>"
+        		                      +"<input type='checkbox' id='"+userid[loop]+"' value='"+userid[loop]+"'></td>"
+        		                      +"<td>"+userid[loop]+"</td>"
+        		                      +"<td>"+useremail[loop]+"</td>"
+        		                      +"<td>"+usercity[loop]+"</td>"
+        		                      +"<td><button type='button' onclick='deleteRow("+userid[loop]+");'><i class='glyphicon glyphicon-trash'></i>Delete</button></td>";
+        		    document.getElementById("slist").appendChild(elmnt);                  
+        		}
+        		
+        	}
+
+        }
+        function selectall(event)
+        {
+        	var situation = event.target.innerHTML;
+        	var boxes = document.querySelectorAll("#slist input[type='checkbox']");
+        	if(situation == "Check All")
+        	{
+                 event.target.innerHTML = "Uncheck All";
+                 for (var i = 0; i < boxes.length; i++) 
+                 {
+                 	boxes[i].checked = true;
+                 }
+        	}
+        	else
+        	{
+        		event.target.innerHTML = "Check All";
+        		for (var i = 0; i < boxes.length; i++) 
+                 {
+                 	boxes[i].checked = false;
+                 }
+
+        	}
+        }
+
+        function deleteRow(uid)
+        {
+            console.log(userid);
+            if(window.confirm("Do you want to delete?") == true)
+            {
+                  var index = userid.indexOf(uid.toString());
+                  console.log(index);
+
+                  userid.splice(index, 1);
+                  useremail.splice(index, 1);
+                  usercity.splice(index, 1);
+
+                  redraw();
+            }
+        }
+
+		
+	</script>
+</head>
+<body>
+    <div id="alert">
+    	<span id="alertmsg"></span>
+    	<input type="button" name="alertBtn" id="alertBtn" value="X" onclick="cancle();">
+    </div>
+
+    <h3>Users List</h3>
+
+    <div id="tdiv">
+    	<form>
+    		<table id="userTable">
+    			<tbody>
+    				<tr>
+    					<th>ID :</th>
+    					<td><input type="text" id="uid" placeholder="Enter ID" onfocus="changeclr(event);" onblur="changeclr(event);"> </td>
+    					<th>Email : </th>
+    					<td><input type="text" id="uemail" placeholder="Ex : samon@gmail.com" onfocus="changeclr(event);" onblur="changeclr(event);"> </td></td>
+    					<th>City :</th>
+    					<td>
+    					<select id="opt" onfocus="changeclr(event);" onblur="changeclr(event);">
+    						<option value="None">None</option>
+    						<option value="Dhaka">Dhaka</option>
+    						<option value="Chittagong">Chittagong</option>
+    						<option value="Others">Others</option>
+    					</select>
+    					</td>
+    					<td><input type="button" id="addBtn" onclick="validate();" value="Add New User"></td>
+    				</tr>
+    			</tbody>
+    		</table>
+    	</form>
+    </div>
+
+    <div id="showTable">
+    	<h4 style="text-align: center; background-color: #ffccff;">Show users list</h4>
+    	<div id="tablecontainer">
+            <table style="width: 100%;">
+            	<thead  style="background-color: #ff9999;">
+            		<th style="width: 100px;"><a href="#" onclick="selectall(event);">Check All</a></th>
+            		<th>ID</th>
+            		<th>Email</th>
+            		<th>City</th>
+            		<th style="width: 100px;"></th>
+            	</thead>
+            	<tbody id="slist"  style="background-color: #ffcce6;">
+            		
+            	</tbody>
+    	    </table>
+    	</div>
+    </div>
+    <script type="text/javascript">
+    	redraw();
+    </script>
+</body>
+</html>

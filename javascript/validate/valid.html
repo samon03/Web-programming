@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RegExp</title>
+	<style type="text/css">
+		span
+		{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	Name : <input type="text" id="name" onkeyup="checkName()">
+ <!--   <button onclick="myFunction()">Check</button>    -->
+
+    <p id="demo"></p>
+
+    Password : <input type="password" id="pass" onkeyup="checkPassword();"><br>
+    <span id="len">At least 8</span> | <span id="cap">One capital letter</span> | <span id="small">One small letter</span>
+
+    <script>
+        function checkName() 
+        {
+           var str = document.getElementById("name").value;
+           var patt = /[0-9]{11}/;
+           var res = patt.test(str);
+           document.getElementById("demo").innerHTML = res;
+           // alert(res);
+        }
+        function checkPassword()
+        {
+        	var password = document.getElementById("pass").value;
+        	var charReg = /^.{8,}$/;
+        	if(charReg.test(password) == true)
+        	{
+                 document.getElementById("len").style.color = "green";
+        	}
+
+        	var capReg = /[A-Z]+/;
+        	if(capReg.test(password) == true)
+        	{
+                 document.getElementById("cap").style.color = "green";
+        	}
+
+        	var smallReg = /[a-z]+/;
+        	if(smallReg.test(password) == true)
+        	{
+                 document.getElementById("small").style.color = "green";
+        	}
+        }
+    </script>
+
+</body>
+</html>

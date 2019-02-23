@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Check validation</title>
+</head>
+<body>
+	<style type="text/css">
+	    form
+	    {
+	    	text-align: center;
+	    	margin-top: 100px;
+	    }
+		form span
+		{
+			color: #e65c00;
+		}
+		hr
+		{
+			width: 350px;
+		}
+	</style>
+	<script type="text/javascript">
+
+        // Name
+		function checkName() 
+		{
+		    var vname = /^[A-Za-z_][A-Za-z0-9_-]*$/;
+            var min_name = /^.{4,}$/;
+            var max_name = /^.{16,}$/;
+
+            var name_input = document.getElementById("uname").value;
+            var flag = 0;
+
+            // valid name
+            if(vname.test(name_input))
+            {
+                document.getElementById("valid_name").style.color = "blue";
+            }
+            else
+            {
+            	document.getElementById("valid_name").style.color = "orange";
+            	flag = 1;
+            }
+
+            // min size length
+            if (min_name.test(name_input)) 
+            {
+                document.getElementById("min_length").style.color = "blue";
+            }
+            else
+            {
+            	document.getElementById("min_length").style.color = "orange";
+            	flag = 1;
+            }
+
+            // max size length
+            if (max_name.test(name_input)) 
+            {
+                document.getElementById("max_length").style.color = "orange";
+            }
+            else
+            {
+            	document.getElementById("max_length").style.color = "blue";
+            	flag = 1;
+            }
+		}
+
+		// Email
+		function checkPassword()
+		{
+			var vlength = /^.{10,}$/;
+			var cap =/[A-Z]+/;
+			var sml = /[a-z]+/;
+			var spcl = /^.*[^A-Za-z0-9].*$/;
+
+			var pass_input = document.getElementById("pass").value;
+
+            // Password Length
+			if (vlength.test(pass_input)) 
+			{
+				document.getElementById("valid_len").style.color = "blue";
+			}
+			else
+			{
+				document.getElementById("valid_len").style.color = "orange";
+			}
+
+			//One capital letter
+			if (cap.test(pass_input)) 
+			{
+				document.getElementById("capital").style.color = "blue";
+			}
+			else
+			{
+				document.getElementById("capital").style.color = "orange";
+			}
+
+			//One small letter
+            if (sml.test(pass_input)) 
+			{
+				document.getElementById("small").style.color = "blue";
+			}
+			else
+			{
+				document.getElementById("small").style.color = "orange";
+			}
+
+			//Special character
+             if (spcl.test(pass_input)) 
+			{
+				document.getElementById("special").style.color = "blue";
+			}
+			else
+			{
+				document.getElementById("special").style.color = "orange";
+			}
+
+		}
+
+		function checkEmail()
+		{
+			var vemail = /^([A-Za-z0-9]+)@([a-z]+)\.([a-z]+){2,6}$/;
+
+			var email_input = document.getElementById("email").value;
+
+			if (vemail.test(email_input)) 
+			{
+				document.getElementById("invalid").style.display = "none";
+			}
+			else
+			{
+				document.getElementById("invalid").style.display = "inline";
+			}
+		}
+	</script>
+    <form>
+      <h3 style="text-align: center;">Validation Checking</h3><hr><br>
+
+	  Enter name and check is it valid :<br>
+	  <input type="text" name="uname" id="uname" placeholder="User name" onkeyup="checkName();"><br>
+	  <span id="valid_name"> Valid character</span> | <span id="max_length">Max size</span> | <span id="min_length">Min size</span>
+	  <br><br><hr><br>
+      Enter password and check is it valid :<br>
+      <input type="password" name="pass" id="pass" placeholder="******" onkeyup="checkPassword();"><br>
+      <span id="valid_len"> Valid length</span> | <span id="capital">One Capital</span> | <span id="small">One Small</span> | <span id="special">Special</span>
+      <br> <br><hr><br>
+      Enter email and check is it valid :<br>
+      <input type="email" name="email" id="email" placeholder="john@gmail.com" onkeyup="checkEmail();">
+      <span id="invalid" style="display:none;">Invalid Email</span><hr><br/>
+
+    </form>
+
+</body>
+</html>

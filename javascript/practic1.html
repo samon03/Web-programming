@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Which/keyperss event</title>
+</head>
+<body onkeydown="myFunction2(event)"
+      onkeyup="myFunction2(event)"
+      onmousedown="myFunction2(event)"
+      onmouseup="myFunction2(event)"
+      onclick="myFunction3(event)">
+   
+   <p>Press a key on the keyboard in the input field to get the Unicode character code of the pressed key.</p>
+   <input type="text" size="40" onkeypress="myFunction(event)">
+   <p id="demo"></p>
+   <p>Event type: <span id="demo2"></span></p>
+   <p id="demo3"></p>
+   <p><strong>Note:</strong> The which property is not supported in IE8 and earlier versions.</p>
+
+   Enter your name: <input type="text" id="fname" onblur="myFunction4()">
+
+   <select id="opt" onchange="changeOnClick()">
+   	   <option value="None">None</option> 
+   	   <option value="Pizza">Pizza</option>   
+   	   <option value="Burger">Burger</option>   
+   	   <option value="Pasta">Pasta</option>   
+   	   <option value="Sausage">Sausage</option>   	
+   </select>
+
+   <p id="demo4"></p>
+
+   <script type="text/javascript">
+
+   	//For unicode use "which" event	
+   	function myFunction(event)
+   	{
+   		var x = event.which;
+   		document.getElementById("demo").innerHTML = "The unicone code is : " + x;
+   	}
+   	//For keypress type use "type" event	
+   	function myFunction2(event)
+   	{
+   		var y = event.type;
+   		document.getElementById("demo2").innerHTML = y;
+   	}
+   	//For trigger target use "target" event	
+   	function myFunction3(event)
+   	{
+        var z = event.target;
+        document.getElementById("demo3").innerHTML = "Trrigered is " + z;
+   	}
+   	//For losses focus uses "onblur" event if focus losses then char get in UpperCase	
+   	function myFunction4()
+    {
+        var a = document.getElementById("fname");
+        a.value = a.value.toUpperCase();
+    }
+    function changeOnClick()
+    {
+    	var b = document.getElementById("opt").value;
+        document.getElementById("demo4").innerHTML = "I like " + b;
+    }
+
+   </script>
+
+</body>
+</html>

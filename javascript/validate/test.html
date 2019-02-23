@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+       <title>Product view</title>
+       <meta charset="utf-8">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>   
+       <link rel="stylesheet" href="webCss.css">
+       
+   </head>
+
+   <body>
+   
+      <h2>Add New Products</h2>
+      
+        <form>
+            </br>
+            <span class="a">
+               <span class="a">
+                  Product Name:<input type="name" id="name" placeholder="Product Name" title="Required field">
+               </span>
+                Product Image:             
+                <span class="a">  
+                  <input class="file-upload-input" type="file" id="imagefile" title="No file choose">
+               </span>    
+               <span class="a">
+                  Selling Price:<input type="value" id="cost" placeholder="Ex. 300">
+               </span>                         
+            </span> 
+
+          </br> </br>
+          
+          <span>
+               <span class="b">
+                    Available Quaintity:<input type="value" id="quantity">
+               </span>
+                <span class="b">  
+                   Date:<input type="date"> 
+               </span>    
+               <span>
+                 <button style="width:140px;" type="submit" class="btn1 btn-sm btn-default" title="Click to add item" value="Submit">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+                 </button>
+               </span>                         
+            </span> 
+          
+        
+              
+         
+        
+          </br> </br>
+          <hr>
+        
+          </br>
+           
+          <h1>All Products List</h1></br>
+          Search: <input type="text" id="searchTxt">
+          </br> </br>
+          Show: <input style="width:80px" type="number" id="showId" value="20" name="pax" step="5" min="5" max="50"> entries
+           </br></br>
+
+            <table>
+               <thead>
+                     <th> Product Id </th>
+                     <th> Name </th>
+                     <th> Image </th>
+                      <th> Quaintity available </th>
+                     <th> Selling price(in $) </th>
+                     <th> Update/Delete </th>
+                    
+               </thead>
+               
+               <tbody>
+                     <tr> 
+                        <td> <p><a href="#">1</a></p></td>
+                       <td> Product 1 </td>
+                       <td> 
+                           <img src="http://planaweddingnow.com/wp-content/uploads/2014/11/Creative-Ideas-for-Your-Chocolate-Cupcakes.jpg" 
+                                alt="" height=100 width=100 align="middle">
+                            </img> 
+                       </td>
+                       <td> 100 </td>
+                       <td> 30 </td>
+                       <td> 
+                         <p>
+                           <a href="#" title="Update"><span class="glyphicon glyphicon-edit"></span>Update</a>
+                           <a href="#" title="Delete"><span class="glyphicon glyphicon-trash"></span>Delete</a>
+                         </p>
+                       </td>
+                    </tr>
+                    
+                     
+                    
+                    <tr> 
+                       <td> <p><a href="#">2</a></p></td>
+                       <td> Product 2 </td>
+                       <td> 
+                             <img src="https://d1w8cc2yygc27j.cloudfront.net/2191439548445838835/-3079378454626110203_thumbnail.jpg" 
+                                alt="" height=100 width=100 align="middle">
+                            </img> 
+                       </td>
+                       <td> 150 </td>
+                       <td> 20 </td>
+                       <td> 
+                         <p>
+                           <a href="#" title="Update"><span class="glyphicon glyphicon-edit" ></span>Update</a>
+                           <a href="#" title="Delete"><span class="glyphicon glyphicon-trash" ></span>Delete</a>
+                         </p>
+                       </td>    
+                    </tr>
+               
+               
+               </tbody>
+           </table>
+           <p>
+              <button type="button" class="btn btn-default btn-sm" title="First page">
+                <span class="glyphicon glyphicon-fast-backward"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-sm" title="Previous page">
+                <span class="glyphicon glyphicon-step-backward"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-sm" title="Next page">
+                <span class="glyphicon glyphicon-step-forward"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-sm" title="Last page">
+                <span class="glyphicon glyphicon-fast-forward"></span>
+              </button>
+           </p>
+           
+         </br></br>
+
+        </form>
+
+   <body>
+
+</html>

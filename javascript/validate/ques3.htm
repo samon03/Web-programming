@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question 3</title>
+	<style type="text/css">
+    #alertbox
+	{
+		height: 30px;
+		padding: 5px;
+		background-color: powderblue; 
+		display: none;    
+	}
+	#alertBtn
+	{
+		float: right;
+		background-color: red;
+		border: 1px outset solid;
+		display: block;
+	}
+   	 	th
+   	 	{
+   	 		text-align: left;
+   	 	}
+	</style>
+	<script type="text/javascript">
+		
+		function hideAlert()
+		{
+			document.getElementById("alertmsg").innerHTML = "";
+			document.getElementById("alertbox").style.display = "none";
+		}
+		function apply()
+		{
+			document.getElementById("alertmsg").innerHTML = "";
+			document.getElementById("alertbox").style.display = "none";
+
+            var fst_name = document.getElementById("fname").value;
+            if (fst_name == "") 
+            {
+                document.getElementById("alertbox").style.display = "block";
+                document.getElementById("alertmsg").innerHTML = "<b>First name</b> is Empty!";
+                return;
+            }
+
+            var sec_name = document.getElementById("lname").value;
+            if (sec_name == "") 
+            {
+                document.getElementById("alertbox").style.display = "block";
+                document.getElementById("alertmsg").innerHTML = "<b>Second name</b> is Empty!";
+                return;
+            }
+
+            var user_email = document.getElementById("uemail").value;
+            var emailReg = /^([A-Za-z0-9]+)@([a-z]+)\.([a-z]+){2,6}$/;
+            if (user_email == "") 
+            {
+                document.getElementById("alertbox").style.display = "block";
+                document.getElementById("alertmsg").innerHTML = "<b>Email</b> is Empty!";
+                return;
+            }
+            else if (emailReg.test(user_email) == false) 
+            {
+            	document.getElementById("alertbox").style.display = "block";
+            	document.getElementById("alertmsg").innerHTML = "Invalid <b>Email</b>!";
+            	return;
+            }
+
+
+             var phn_no = document.getElementById("phn").value;
+             var phnReg = /[0-9]{11}/;
+             if (phn_no == "") 
+             {
+                document.getElementById("alertbox").style.display = "block";
+                document.getElementById("alertmsg").innerHTML = "<b>Phone no</b> is Empty!";
+                return;
+             }
+             else if (phnReg.test(phn_no) == false) 
+             {
+             	document.getElementById("alertbox").style.display = "block";
+            	document.getElementById("alertmsg").innerHTML = "Invalid <b>Phone no</b>!";
+            	return;
+             }
+
+             var pcode = document.getElementById("pcode").value;
+             var pcodeReg = /[0-9]{4}/;
+             if (pcode == "") 
+             {
+                document.getElementById("alertbox").style.display = "block";
+                document.getElementById("alertmsg").innerHTML = "<b>Postal Code</b> is Empty!";
+                return;
+             }
+             else if (pcodeReg.test(pcode) == false) 
+             {
+             	document.getElementById("alertbox").style.display = "block";
+            	document.getElementById("alertmsg").innerHTML = "Invalid <b>Postal Code</b>!";
+            	return;
+             }
+            
+
+		}
+
+
+	</script>
+</head>
+<body>
+	<div id="alertbox">
+    	<span id="alertmsg"></span>
+    	<input type="button" name="alertBtn" id="alertBtn" value="X" onclick="hideAlert();">
+    </div>
+
+    <h3>Job Application Form</h3>
+	<hr style="color: silver">
+		<table style="width: 100%;">
+			<tbody>
+			  <tr>
+				 <th>First Name:</th>
+				 <td><input type="text" id="fname"></td>
+				 <th>Last Name:</th>
+				 <td><input type="text" id="lname"></td>
+			  </tr>
+			  <tr>
+				 <th>Gender: </th>
+			   	 <td><input type="radio" value="Male">Male<input type="radio" value="Female">Female</td>
+				 <th>Birthdate: </th>
+				 <td><input type="date" id="bdate"></td>
+			   </tr>
+				<tr>
+				 <th>Phone: </th>
+			   	 <td><input type="text" placeholder="Phone no" id="phn">
+				 <th>Email: </th>
+				 <td><input type="email" placeholder="email" id="uemail"></td>
+				</tr>
+				<tr>
+				 <th>Country: </th>
+			   	 <td>
+			   	 	<select>
+			   	 		<option value="Bangladesh">Bangladesh</option>
+			   	 		<option value="India">India</option>
+			   	 		<option value="Canada">Canada</option>
+			   	 		<option value="USA">USA</option>
+			   	 		<option value="United Kingdom">United Kingdom</option>
+			   	 		<option value="France">France</option>
+			   	 		<option value="Germany">Germany</option>
+			   	 		<option value="Others">Others</option>
+			   	 	</select>
+			   	 </td>
+				 <th>Postal Code: </th>
+				 <td><input type="text" id="pcode"></td>
+				</tr>
+            </tbody>
+		</table>
+            <textarea rows="5" cols="133" placeholder="Type your address here"></textarea>
+        <table>
+            <tbody>
+				<tr>
+					<th>Application Possition : </th>
+					<td>
+						<select>
+			   	 		<option value="Software Engineer Intern">Software Engineer Intern</option>
+			   	 		<option value="Junior Software Engineer">Junior Software Engineer</option>
+			   	 		<option value="SoftwareEngineer">Software Engineer</option>
+			   	 		<option value="Senior Software Engineer">Senior Software Engineer</option>
+			   	 		<option value="Team Manager">Team Manager</option>
+			   	 		<option value="Quality Assurance Officer">Quality Assurance Officer</option>
+			   	 		<option value="Software Tester">Software Tester</option>
+			   	 		<option value="Others">Others</option>
+			   	 	</select>
+					</td>
+				</tr>
+				<tr>
+					<th>Upload CV : </th>
+					<td><input type="file"></td>
+				</tr>
+            </tbody>
+        </table>
+		<button style="margin-left: 40em;" onclick="apply();">Apply</button><button type="reset">Reset</button>     
+</body>
+</html>
