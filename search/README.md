@@ -1,4 +1,4 @@
-**Search:**
+**Search page:**
 
 ![search](https://user-images.githubusercontent.com/47208117/58329723-0a34d580-7e57-11e9-802a-05c60d3b5590.png)
 
