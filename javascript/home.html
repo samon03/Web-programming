@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Add data & show list on table</title>
+        
+        <style>
+            #alertbox
+            {
+                width: 100%;
+                height: 25px;
+                border: 1px solid;
+                display: none;
+            }
+            #navBar
+            {
+                 width: 100%;
+                 height: 50px;
+                 background-color: #e6e6ff;
+               
+                
+            }
+            #home_content
+            {
+                width: 100%;
+                padding: 10px;
+                margin: 10px;
+            }
+            #about_content
+            {
+            	width:100%;
+            	margin: 10px;
+            	padding: 10px;
+            	display: none;
+            }
+        </style>
+        <script>
+        	function home_view()
+        	{
+        		 document.getElementById('home_content').style.display = "block";
+                 document.getElementById('about_content').style.display = "none";
+        	}
+        	function about_view()
+        	{
+        		document.getElementById('home_content').style.display = "none";
+                document.getElementById('about_content').style.display = "block";
+        	}
+        </script>
+    </head>
+    <body style="background-color: #b3cccc;">
+        <div id="mainBody">
+            <div id="navBar">
+            <span style="float: right; margin-top: 20px;">
+                <input type="button" value="Home" style="background-color: #b3b3cc; font-size: 18px;" onclick="home_view();">
+                <input type="button" value="About" style="background-color: #b3b3cc; font-size: 18px; margin-right: 0.5em;" onclick="about_view();">
+            </span>
+           </div>
+            <div id="home_content" >
+                <h4>Welcome to home!</h4>
+                <p>It is quite simple to do a page redirect using JavaScript at client side. To redirect your site visitors to a new page, you just need to add a line in your head section as follows.</p>
+            </div>
+            <div id="about_content">
+            	 <h4>About us</h4>
+                 <p>You did not like the name of your domain and you are moving to a new one. In such a scenario, you may want to direct all your visitors to the new site. Here you can maintain your old domain but put a single page with a page redirection such that all your old domain visitors can come to your new domain.</p> 
+            </div>
+        </div>
+        
+    </body>
+</html>
