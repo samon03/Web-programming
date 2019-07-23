@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Allah</title>
+    <style type="text/css">
+    #userTable 
+    {
+       width: 50%;
+    }   
+    #tablecontainer
+    {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    #tablecontainer table,#tablecontainer tr
+    {
+            border-bottom:1px solid black;
+            border-collapse:collapse;
+    }
+    </style>
+    <script type="text/javascript">
+        var userid = [];
+        var useremail = [];
+        function validate()
+        {
+            var id = document.querySelectorAll("#uc")[0].value;
+            var email = document.getElementById("us").value;
+
+            userid.push(id);
+            useremail.push(email);
+            redraw();   
+        }
+        function redraw()
+        {
+            document.getElementById("slist").innerHTML = "";
+            if(userid.length != 0)
+            {
+                userid.sort(function(a, b){return a-b});
+                var loop;
+                for(loop = 0; loop < userid.length; loop++)
+                {
+                    var elmnt = document.createElement("tr");
+                    elmnt.innerHTML = "<td style='text-align:center;'>"
+                                      +"<input type='checkbox' id='"+userid[loop]+"' value='"+userid[loop]+"'></td>"
+                                      +"<td>"+userid[loop]+"</td>"
+                                      +","
+                                      +"<td>"+useremail[loop]+"</td>"
+                                      +"<td><button type='button' onclick='deleteRow("+userid[loop]+");'><i class='glyphicon glyphicon-trash'></i>Delete</button></td>";
+                    document.getElementById("slist").appendChild(elmnt);                  
+                }
+                
+            }
+        }
+        function deleteRow(uc)
+        {
+            console.log(userid);
+            if(window.confirm("Do you want to delete?") == true)
+            {
+                  var index = userid.indexOf(uc.toString());
+                  console.log(index);
+                  userid.splice(index, 1);
+                  useremail.splice(index, 1);
+                  redraw();
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="tdiv">
+        <form>
+            <table id="userTable" style="width: 50%">
+                <tbody>
+                    <tr>
+                        <th>ID :</th>
+                        <td><input type="text" id="uc"> </td>
+                    </tr>
+                    <tr>    
+                        <th>Email : </th>
+                        <td><input type="text" id="us"> </td></td>
+                    </tr>
+                    <tr>    
+                        <td><input type="button" id="addBtn" onclick="validate();" value="Add New User"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div id="showTable">
+        <div id="tablecontainer">
+            <table style="width: 50%;">
+                <tbody id="slist">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        redraw();
+    </script>
+</body>
+</html>
